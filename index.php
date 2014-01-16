@@ -6,13 +6,7 @@
     </head>
     <body>
         <?php
-       
-
-/*Mostrar cadenas*/
-$saludo = "hola" ;
-$estilo = "mundo" ;
-echo "¡".$saludo." ".$estilo."!";
-
+       print "<p>Su nombre es $_REQUEST"
         ?>
     </body>
 </html>
