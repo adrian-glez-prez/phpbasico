@@ -12,6 +12,7 @@
            $nombre = $_REQUEST['nombre'];
            $edad = $_REQUEST['edad'];
            $beca = isset($_REQUEST['beca']);
+           $sexo = (isset($_REQUEST['sexo'])) ? $_REQUEST['sexo'] : false;
         //Validar datos
         $error = false;
         $mensaje_error = " ERROR ";
@@ -35,11 +36,15 @@
                 echo $nombre. " es menor de edad ";
             }
             if ($beca) {
-                echo "y solicita beca ";
+                echo "<br>Y solicita beca ";
             } else {
-                echo "y no solicita beca ";
+                echo "<br>Y no solicita beca ";
             }
-            
+            if ($sexo) {
+                echo "<br>Su género es ".$sexo;
+            } else {
+                echo "<br>Su sexo no se ha especificado";
+            }                        
           } else {
             //Si ha error
             echo $mensaje_error;

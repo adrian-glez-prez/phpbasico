@@ -79,3 +79,10 @@ function validarNombreEstricto ($valor) {
     }
 }
 
+function comprobarsexo($valor) {
+    if (isset($valor)) {
+        return $valor;
+    } else {
+        return false;
+    }
+}
