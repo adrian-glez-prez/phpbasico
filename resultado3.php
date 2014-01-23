@@ -11,6 +11,7 @@
         //Entrada datos
            $nombre = $_REQUEST['nombre'];
            $edad = $_REQUEST['edad'];
+           $beca = isset($_REQUEST['beca']);
         //Validar datos
         $error = false;
         $mensaje_error = " ERROR ";
@@ -25,7 +26,6 @@
             $error = true;
             $mensaje_error .= "Edad debe ser un número";
         }
-  
         //Calculo y salida
          if (!$error) {
              //Si no hay error
@@ -33,6 +33,11 @@
                 echo $nombre. " es mayor de edad ";
             } else {
                 echo $nombre. " es menor de edad ";
+            }
+            if ($beca) {
+                echo "y solicita beca ";
+            } else {
+                echo "y no solicita beca ";
             }
             
           } else {
