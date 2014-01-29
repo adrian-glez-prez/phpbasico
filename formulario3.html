@@ -13,13 +13,21 @@
             <p>Sexo: <input type="radio" name="sexo" value="masculino">Masculino<input type="radio" name="sexo" value="femenino">Femenino</p>
             <p>Estado civil
                 <select name="estado">
-                    <option>Seleccionar...</option>
+                    <option selected="selected" disabled="disabled">Seleccionar...</option>
                     <option>soltero</option>
                     <option>casado</option>
                     <option>divorciado</option>
                     <option>otros</option>
                 </select>
             </p>
+            <p> Aficiones
+                <select name="aficion" multiple="multiple">
+                    <option selected="selected" disabled="disabled">Seleccionar...</option>
+                    <option>futbol</option>
+                    <option>coches</option>
+                    <option>juegos</option>
+                    <option>otros</option>
+                </select>
             <p><input type="submit" value="Enviar"/></p>
         </form>
     </body>

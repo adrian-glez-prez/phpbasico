@@ -13,6 +13,8 @@
            $edad = $_REQUEST['edad'];
            $beca = isset($_REQUEST['beca']);
            $sexo = (isset($_REQUEST['sexo'])) ? $_REQUEST['sexo'] : false;
+           $estado = (isset($_REQUEST['estado'])) ? $_REQUEST['estado'] : false;
+           $aficion[] = (isset($_REQUEST['aficion'])) ? $_REQUEST['aficion'] : false;
         //Validar datos
         $error = false;
         $mensaje_error = " ERROR ";
@@ -25,7 +27,7 @@
          //validar edad
         if (!validarEdad($edad)) {
             $error = true;
-            $mensaje_error .= "Edad debe ser un número";
+            $mensaje_error .= "Edad debe ser un número ";
         }
         //Calculo y salida
          if (!$error) {
@@ -44,7 +46,18 @@
                 echo "<br>Su género es ".$sexo;
             } else {
                 echo "<br>Su sexo no se ha especificado";
-            }                        
+            }
+            echo "<br>El estado civil es";
+            if (!$estado || $estado=="Seleccionar...") {
+                    echo "tá sin especificar";
+            }else {
+                    echo " ".$estado;
+            }
+            echo "<br>Sus aficiones son<br>";
+            if ($aficion){
+             
+             
+            }
           } else {
             //Si ha error
             echo $mensaje_error;
