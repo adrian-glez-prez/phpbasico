@@ -8,10 +8,10 @@
     <body>
         <div>Resultado IMC</div>
         <?php
-            $masa = $_REQUEST['masa'];
+            $peso = $_REQUEST['peso'];
             $estatura = $_REQUEST['estatura'];
-            $errores = array();
-            if (!validarPeso($masa)) {
+            $errores = "";
+            if (!validarPeso($peso)) {
                 $errores[] = MSG_ERR_PESO;
             }
              if (!validarPeso($estatura)) {
