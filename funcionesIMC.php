@@ -1,5 +1,35 @@
 <?php
 
+//validación de datos
+/*Validación de peso
+ * a partir del peso comprueba que sea un número entre 1 y 100 y devuelve true 
+ * si es válido y false en caso contrario
+ */
+define ("pesomin","1");
+define ("pesomax","100");
+function enPeso ($peso){
+    return ($peso>=pesomin)&&($peso<pesomax);
+}
+function validarPeso($peso){
+     return enPeso($peso)&& ctype_digit($peso);
+}
+
+/*Validación de altura
+ * 
+ */
+define ("alturamin","20");
+define ("alturamax","200");
+function enAltura ($altura){
+    return ($altura>=alturamin)&&($altura<alturamax);
+}
+function validarAltura($estatura) {
+    if (filter_var($peso,FILTER_VALIDATE_INT)) {
+        $resultado = enPeso($estatura);
+    } else {
+        $resultado = FALSE;
+    }
+    return $resultado;
+}
 /**Calcula el valor IMC
  *$param masa expresada en kilos [0-500]
  *$param estatura expresada en centímetros [0-300]
