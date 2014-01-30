@@ -12,10 +12,10 @@
             $estatura = $_REQUEST['estatura'];
             $errores = "";
             if (!validarPeso($peso)) {
-                $errores[] = MSG_ERR_PESO;
+                $errores= MSG_ERR_PESO;
             }
              if (!validarPeso($estatura)) {
-                $errores[] = MSG_ERR_ESTATURA;
+                $errores= MSG_ERR_ESTATURA;
             }
             if (count($errores)>0) {
                 echo "Errores<br>";
