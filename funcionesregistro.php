@@ -91,6 +91,7 @@ function esEmail ($cadena){
 }
 
 /*-----------------------------EXPERIMENTO------------------------------------*/
+//comprobar que tiene letras Y numeros
 function tieneAlfaNum ($cadena){
     $resultado=false;
     $resultadoalf=false;
