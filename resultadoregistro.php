@@ -13,12 +13,13 @@
         $error="";
         //errores---------------------------------------------
         //nombre demasiado corto/largo
+        /*
         if (!enRango($login)){
             $error.="<li> el nombre es demasiado corto o demasiado largo (3-10) o no existe</li>";
         }
         //nombre alfanumérico
         if (!esAlfaNum($login)){
-            $error.="<li> el nombre debe estar compuesto por caracteres alfanumericos</li>";
+            $error.="<li> el nombre debe estar compuesto por caracteres alfanuméricos</li>";
         }
         //contraseña demasiado corta/larga
         if (!enRango($pass1)){
@@ -37,8 +38,9 @@
             $error.="<li> el correo electrónico debe tener estructura de email </li>";
             
         }
+        */
         //salida de datos----------------------------------------------
-        if ($error==""){
+        if (validar($login,$pass1,$pass2,$email,$error)){
             echo "<ul>";
             foreach ($salida as $valor) {
                 echo "<li>".$valor."</li>";
