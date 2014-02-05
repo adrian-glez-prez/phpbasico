@@ -1,4 +1,7 @@
-<?php require_once 'funcionesregistro.php'; ?>
+<?php  
+session_start();
+require_once 'funcionesregistro.php';
+?>
 <html>
     <head>
     </head>
