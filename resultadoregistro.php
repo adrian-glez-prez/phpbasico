@@ -18,7 +18,7 @@
                 echo "<li>".$valor."</li>";
             }
             echo "</ul>"; 
-        } else {
+        } else {            
             echo "<ul>";
             echo $error;
             echo "</ul>";

@@ -22,6 +22,9 @@ require_once 'funcionesregistro.php';
             }
             echo "</ul>"; 
         } else {
+            $_SESSION['errores']=$error;
+            $url="formularioregistro_1.php?".$_SERVER['QUERY_STRING'];
+            header ('Location:'.$url);
             echo "<ul>";
             echo $error;
             echo "</ul>";
