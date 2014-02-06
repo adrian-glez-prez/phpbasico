@@ -1,5 +1,7 @@
 <?php
 session_start();
+$login=(isset($_REQUEST['login']))?$_REQUEST['login']:"";
+$email=(isset($_REQUEST['email']))?$_REQUEST['login']:""; 
 ?>
 <!DOCTYPE html>
 <!--
@@ -18,12 +20,16 @@ password)
     <body>
         <div>TODO write content</div>
         <form action="resultadoregistro_1.php" method="GET">
-            Login:<input type="text" name="login"/><br>
+            Login:<input type="text" name="login" value="<?php echo $login; ?>"/><br>
             Password:<input type="password" name="pass1"/><br>
             Password:(repetir)<input type="password" name="pass2"/><br>
-            e-mail:<input type="text" name="email"/><br>
+            e-mail:<input type="text" name="email" value="<?php echo $email; ?>"/><br>
             <input type="submit" value="enviar"/>
         </form>
+        <?php $error=(isset($_SESSION['errores']))?$_SESSION['errores']:""; 
+        if ($error!=""){
+            echo $error;
+        }?>
     </body>
 </html>
 

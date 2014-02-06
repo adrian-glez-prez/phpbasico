@@ -9,10 +9,10 @@ require_once 'funcionesregistro.php';
         <?php
         //asignación de variables---------------------------------------
         $salida=$_REQUEST;
-        $login=$_REQUEST['login'];
-        $pass1=$_REQUEST['pass1'];
-        $pass2=$_REQUEST['pass2'];
-        $email=$_REQUEST['email'];   
+        $login=(isset($_REQUEST['login']))?$_REQUEST['login']:"";
+        $pass1=(isset($_REQUEST['pass1']))?$_REQUEST['pass1']:"";
+        $pass2=(isset($_REQUEST['pass2']))?$_REQUEST['pass2']:"";
+        $email=(isset($_REQUEST['email']))?$_REQUEST['login']:""; 
         $error="";
         //salida de datos----------------------------------------------
         if (validar($login,$pass1,$pass2,$email,$error)){
@@ -22,12 +22,11 @@ require_once 'funcionesregistro.php';
             }
             echo "</ul>"; 
         } else {
+            $error="<ul>".$error."<ul>";
+            echo $error;
             $_SESSION['errores']=$error;
             $url="formularioregistro_1.php?".$_SERVER['QUERY_STRING'];
             header ('Location:'.$url);
-            echo "<ul>";
-            echo $error;
-            echo "</ul>";
         }
         ?>
     </body>
