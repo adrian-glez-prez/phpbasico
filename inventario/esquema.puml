@@ -18,15 +18,38 @@ Pedir datos para un nuevo equipo
 
 }
 class form_nuevo_equipo <<formulario>> {
-- nombre: text
-- desc: text
-- ip: text
-- ram: text
+Las variables de sesion si no 
+existen se inicializan
+...
+nombre: text 
+value: $_SESSION[datos][0]
+----
+desc: text 
+value: $_SESSION[datos][1]
+---
+ip: text 
+value: $_SESSION[datos][2]
+---
+ram: text 
+value: $_SESSION[datos][3]
 
 }
 
 class SESSION << (S, orchild) _SESSION>> {
 variables de sesion
+---
+-datos: Array con los datos de form
+-errores: Array flags de errores
+-hayErrores: Indica si hay algun error  
+}
+
+class constantes << (F, orchild) php >> {
+Constantes
+---
+- MSG_ERR_NOMBRE
+- MSG_ERR_DESC
+- MSG_ERR_IP
+- MSG_ERR_RAM 
 }
 class grabar_equipo <<php>>
 
@@ -36,5 +59,6 @@ index ..> estilo: include
 formulario_nuevo_equipo o-- form_nuevo_equipo
 formulario --> grabar_equipo: submit
 formulario_nuevo_equipo --|> SESSION
+formulario_nuevo_equipo ..> constantes: include
 
 @enduml
