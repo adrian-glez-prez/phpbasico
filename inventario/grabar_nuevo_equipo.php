@@ -44,4 +44,3 @@ if ($_SESSION['hayErrores']) {
     echo "Grabar Equipo en Base de Datos...";
 }
 
-
