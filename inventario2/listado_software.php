@@ -31,5 +31,6 @@ and open the template in the editor.
             
             $bd = null;
         ?>
+        <a href="formulario_nuevo_software">añadir nuevo software</a>
     </body>
 </html>
