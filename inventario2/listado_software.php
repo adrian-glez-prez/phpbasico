@@ -22,10 +22,11 @@ and open the template in the editor.
             if (!$resultado) {
                 echo "Error en la consulta";
             } else {
-                echo "<table border=1><tr><th>titulo</th><th>url</th></tr>";
+                echo "<table border='1'><tr><th>titulo</th><th>url</th></tr>";
                 foreach($resultado as $registro) {
                     echo "<tr><td>".$registro['titulo']."</td><td>".$registro['url']."</td></tr>"; 
                 }
+                echo "</table>";
             }
             
             $bd = null;
