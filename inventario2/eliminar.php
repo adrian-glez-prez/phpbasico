@@ -2,20 +2,23 @@
 session_start();
 require_once 'funciones_bd.php';
 
-$bd = conectaBd();
-$consulta = "DELETE * FROM software WHERE id=".$_SESSION['id'];
-$resultado = $bd->query($consulta);
+$_SESSION['id'] = (isset($_REQUEST['id']))?
+            $_REQUEST['id']:0;
 
-if (!$resultado) {
-       $url = "error.php?msg_error=Error_Consulta_Editar";
-       header('Location:'.$url);
-} else { 
-       $registro = $resultado->fetch(); 
-       if(!$registro) {
-           $url = "error.php?msg_error=Error_Registro_Software_inexistente";
-           header('Location:'.$url);
-       } else {
-           $_SESSION['datos'][0] = $registro['titulo'];
-           $_SESSION['datos'][1] = $registro['url'];
-       }
-}
+ $db = conectaBd();   
+    $id = $_SESSION['id'];
+
+   
+    
+    $consulta = "DELETE FROM software 
+    WHERE id= :id";
+    
+    $resultado = $db->prepare($consulta);
+    if ($resultado->execute(array(":id" => $id))) {
+            $url = "listado_software.php";
+            header('Location:'.$url);
+    } else {
+        print "<p>Error al eliminar el registro.</p>\n";
+    }
+
+    $db = null;

@@ -1,5 +1,5 @@
 <?php 
-sessionstart();
+session_start();
 
 $_SESSION['id'] = (isset($_REQUEST['id']))?
             $_REQUEST['id']:0;
@@ -18,7 +18,7 @@ $_SESSION['id'] = (isset($_REQUEST['id']))?
            } else {
            echo "¿Está seguro de que quiere eliminar este registro?";
            echo "<div><a href=eliminar.php?id=".$_SESSION['id'].">sí, elimínalo</a></div>";
-           echo "<div><a href=listado_software.php>no, regreso al listado</a></div>"
+           echo "<div><a href=listado_software.php>no, regreso al listado</a></div>";
            }
            ?>
         
