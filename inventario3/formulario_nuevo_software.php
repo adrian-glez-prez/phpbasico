@@ -1,5 +1,6 @@
 <?php
-session_start();
+
+require_once 'cabecera.php';
 require_once 'funciones.php';
     // Estructura: campos del formulario
 $_SESSION['datos'] = (isset($_SESSION['datos']))?

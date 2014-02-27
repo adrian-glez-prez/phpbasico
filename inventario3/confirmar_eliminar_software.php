@@ -1,5 +1,6 @@
 <?php 
-session_start();
+
+require_once 'cabecera.php';
 
 $_SESSION['id'] = (isset($_REQUEST['id']))?
             $_REQUEST['id']:0;

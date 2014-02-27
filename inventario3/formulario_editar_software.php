@@ -1,5 +1,6 @@
 <?php
-session_start();
+
+require_once 'cabecera.php';
 require_once 'funciones.php';
 require_once 'funciones_bd.php';
     // Estructura: campos del formulario
