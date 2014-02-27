@@ -1,4 +1,4 @@
-<?php session_start(); 
+<?php session_start();
 require_once 'funciones_bd.php'; 
 
 $login = (isset($_REQUEST['login']))?

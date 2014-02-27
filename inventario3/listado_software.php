@@ -1,12 +1,6 @@
 <?php 
-session_start();
 require_once 'funciones_bd.php'; 
-if (!isset($_SESSION['usuario'])) {
-    $url="error.php?msg_error=REQUIERE LOGIN";
-    header ('Location'.$url);
-}
-echo "usuario: ".$_SESSION['usuario']."<br>";
-echo "<a href=logout.php>Logout</a>"
+require_once 'cabecera.php';
 ?>
 <!DOCTYPE html>
 <!--
