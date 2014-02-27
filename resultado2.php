@@ -7,41 +7,45 @@
     <body>
         <div>TODO write content</div>
         <?php
-            //entrada de datos
-            $nombre="";
-            if (isset($_REQUEST['nombre'])){
-                $nombre=$_REQUEST['nombre'];
+            //Entrada datos
+            $nombre = "";
+            if (isset($_REQUEST['nombre'])) {
+                $nombre = $_REQUEST['nombre'];
+            }    
+            $edad = $_REQUEST['edad'];
+            //Validar datos
+            $error = false;
+            $mensaje_error = "ERROR: ";
+            //Validar nombre
+            if ($nombre == "") {
+                $error = true;
+                $mensaje_error .= "Nombre obligatorio<br>";
+            }            
+            //Validar edad
+            if (!is_numeric($edad)) {
+                $error = true;
+                $mensaje_error .= "Edad debe ser un número<br>";
+            } else {
+                //Es un número--> Verificar (0,100]
+                if ($edad <= 0 || $edad > 100) {
+                    $error = true;
+                    $mensaje_error .= "Edad debe estar (0, 100] <br>";
+                }
             }
-            $edad=$_REQUEST['edad']; 
-            //comprobaciones de datos
-            $error=false;
-            $mensaje_error='ERROR: ';
-            //validar edad
-            if (!is_numeric($edad)){
-                $error=true;
-                $mensaje_error.='Edad debe ser un número. ';
-            } else if ($edad<=0||$edad>=100) {
-                $error=true;
-                $mensaje_error.='Edad debe ser un número entre 1 y 100. ';
-            }
-            //validar nombre
-            if ($nombre==""){
-                $error=true;
-                $mensaje_error.='El nombre no puede estar en blanco. ';
-            }
-            //operaciones
+            //Cálculo y Salida
             if (!$error) {
-                 echo('Hola. '.$nombre.' es ');
+                // Si no hay error
                 if ($edad>=18) {
-                    echo('mayor de edad');
-                } else {
-                    echo('menor de edad');
+                    echo $nombre." es Mayor de Edad";
+                } else {    
+                    echo $nombre." es Menor de edad";
                 }
             } else {
+                // Si hay error
                 echo $mensaje_error;
-                echo "<a href='javascript:history.go(-1);'>volver al formulario</a>";
+                echo "<a href='javascript:history.go(-1);'>Volver al formulario</a>";
             }
-           
         ?>
     </body>
 </html>
+

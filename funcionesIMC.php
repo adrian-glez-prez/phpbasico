@@ -22,9 +22,9 @@ define('MSG_ERR_ESTATURA', 'La estatura debe ser un valor ...');
  * @return float resultado del cálculo imc redondeado a 2 decimales
  * @link http://es.wikipedia.org/wiki/%C3%8Dndice_de_masa_corporal
  */
-function calculoIMC($peso, $estatura) {
+function calculoIMC($masa, $estatura) {
   $estatura = $estatura / 100; // cms a mts
-  $imc = $peso /  ($estatura * $estatura);
+  $imc = $masa /  ($estatura * $estatura);
   return round($imc, 2);
 }
 
@@ -83,7 +83,7 @@ function validarPeso($peso) {
  * @return boolean True si cumple y False en caso contrario
  */
 function validarEstatura($estatura) {
-    if (filter_var($peso,FILTER_VALIDATE_INT)) {
+    if (filter_var($estatura,FILTER_VALIDATE_INT)) {
         $resultado = enRango(ESTATURA_MIN, ESTATURA_MAX, $estatura);
     } else {
         $resultado = FALSE;

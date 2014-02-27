@@ -1,41 +1,37 @@
 <html>
     <head>
-        <title>IMC</title>
+        <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
     </head>
     <body>
-        <div>Resultado del IMC</div>
-        <?php 
-        
-        //*Entrada de datos
-        $masa = $_REQUEST['masa'];
-        $estatura = $_REQUEST['estatura']/100; //*Centímetros a metros
-        $IMC= 0.0;
-        $clasificacion= "";
-        //*Fórmula
-        $IMC = ($masa / ($estatura*$estatura));
-        
-        echo "Valor de IMC = ";
-        echo $IMC;
-        
-        //*Resultados IMC
-        if ($IMC <18.5){
-            $clasificacion = "Bajo peso";
-        }
-            elseif ($IMC>18.5 &&  $IMC<24.99){
-             $clasificacion = "Normal";
-         }
-            elseif ($IMC>=25 && $IMC<=29.99){
-             $clasificacion = "Sobrepeso";
-        }
-            elseif ($IMC>=30){
-             $clasificacion = "Obesidad";
-        }
-
-        echo "</br>";
-        echo "Clasificación = ".$clasificacion;
-       
+        <div>Resultado IMC</div>
+        <?php
+            //print_r($_REQUEST);
+            $masa = $_REQUEST['masa'];
+            $estatura = $_REQUEST['estatura'];
+            $imc = 0.0;
+            $clasificacion = "";
+            //Cálculo
+            $estatura = $estatura / 100; // cms a mts
+            $imc = $masa /  ($estatura * $estatura);
+            
+            echo "Valor IMC = ";
+            echo $imc;
+            
+            if ($imc < 18.5) {
+                $clasificacion = "Bajo peso";       
+            } elseif ($imc < 25) {
+                $clasificacion = "Normal"; 
+            } elseif ($imc < 30) {
+                $clasificacion = "Sobrepeso"; 
+            } else {
+                $clasificacion = "Obesisad";
+            }
+            
+            echo "<br>";
+            echo "Clasificación = ".$clasificacion;
         ?>
     </body>
 </html>
+

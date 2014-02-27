@@ -35,22 +35,28 @@ function validarDatosRegistro() {
 // PRINCIPAL //
 validarDatosRegistro();
 if ($_SESSION['hayErrores']) {
-    $url = "formulario_nuevo_software.php";
+    $url = "formulario_editar_software.php";
     header('Location:'.$url);
 } else {
+
     $db = conectaBd();
     $titulo = $_SESSION['datos'][0];
-    $url = $_SESSION['datos'][1];        
-    $consulta = "INSERT INTO software 
-    (titulo, url)
-    VALUES (:titulo, :url)";
+    $url = $_SESSION['datos'][1];    
+    $id = $_SESSION['id'];
+
+   
+    
+    $consulta = "UPDATE software 
+    set titulo = :titulo, 
+    url= :url 
+    WHERE id= :id";
+    
     $resultado = $db->prepare($consulta);
-    if ($resultado->execute(array(":titulo" => $titulo, ":url" => $url))) {
-        unset($_SESSION['datos']);
-        unset($_SESSION['errores']);
-        unset($_SESSION['hayErrores']);
-        $url = "listado_software.php";
-        header('Location:'.$url);
+    if ($resultado->execute(array(":titulo" => $titulo,
+        ":url" => $url, 
+        ":id" => $id))) {
+            $url = "listado_software.php";
+            header('Location:'.$url);
     } else {
         print "<p>Error al crear el registro.</p>\n";
     }

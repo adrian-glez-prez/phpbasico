@@ -39,24 +39,39 @@ function validarDatosRegistro() {
 // PRINCIPAL //
 validarDatosRegistro();
 if ($_SESSION['hayErrores']) {
-    $url = "formulario_nuevo_equipo.php";
+    $url = "formulario_editar_equipo.php";
     header('Location:'.$url);
 } else {
     $db = conectaBd();
-    $consulta = "INSERT INTO Equipo (nombre, descripcion, ip, ram)
-    VALUES ('"
-            .$_SESSION['datos'][0]."', '"
-           .$_SESSION['datos'][1]."', '"
-           .$_SESSION['datos'][2]."', " 
-           .$_SESSION['datos'][3].")";
-    //print_r($consulta);
-    if ($db->query($consulta)) {
-           $url = "grabacion_ok.php";
-           header('Location:'.$url);
+    $nombre = $_SESSION['datos'][0];
+    $desc = $_SESSION['datos'][1];  
+    $ip = $_SESSION['datos'][2];  
+    $ram = $_SESSION['datos'][3];  
+    $id = $_SESSION['id'];
+    
+    $consulta = "UPDATE equipo 
+    set nombre = :nombre, 
+    descripcion=:desc, 
+    ip=:ip,
+    ram=:ram 
+    WHERE id=:id";
+    
+    $resultado = $db->prepare($consulta);
+    if ($resultado->execute(array(":nombre" => $nombre,
+        ":desc" => $desc, 
+        ":ip" => $ip, 
+        ":ram" => $ram,
+        ":id" => $id))) {
+                unset($_SESSION['datos']);
+                unset($_SESSION['errores']);
+                unset($_SESSION['hayErrores']);
+                $_SESSION['id'] = 0;
+                $url = "listado_software.php";
+                header('Location:'.$url);
     } else {
-            $url = "error.php?msg_error=Error_BD";
-            header('Location:'.$url);
+        print "<p>Error al crear el registro.</p>\n";
     }
+
     $db = null;
 }
 

@@ -1,6 +1,4 @@
-<?php
-require_once 'funciones_bd.php';
-?>
+<?php require_once 'funciones_bd.php'; ?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -15,22 +13,35 @@ and open the template in the editor.
     </head>
     <body>
         <div>Listado de Software</div>
+        <div><a href="formulario_nuevo_software.php">Nuevo Equipo</a></div>
         <?php
-        $bd=conectaBd();
-        $consulta="SELECT * FROM software";
-        $resultado = $bd->query($consulta);
+            $bd = conectaBd();
+            $consulta = "SELECT * FROM software";
+            $resultado = $bd->query($consulta);
             if (!$resultado) {
                 echo "Error en la consulta";
             } else {
-                echo "<table border='1'><tr><th>titulo</th><th>url</th></tr>";
+                echo "<table border=1>";
+                echo "<tr>";
+                echo "<th>Titulo</th>";
+                echo "<th>URL</th>";
+                echo "<th></th>";
+                echo "<th></th>";
+                echo "</tr>";
                 foreach($resultado as $registro) {
-                    echo "<tr><td>".$registro['titulo']."</td><td>".$registro['url']."</td></tr>"; 
+                    echo "<tr>";
+                    echo "<td>".$registro['titulo']."</td>";
+                    echo "<td>".$registro['url']."</td>";
+                    echo "<td>";
+                    $destino="formulario_editar_software.php?id=".$registro['id'];
+                    echo "<a href=".$destino.">Editar</a></td>";
+                    echo "<td>"."Eliminar"."</td>";
+                    echo "</tr>";          
                 }
                 echo "</table>";
             }
             
             $bd = null;
-        ?>
-        <a href="formulario_nuevo_software.php">añadir nuevo software</a>
+        ?>   
     </body>
 </html>
