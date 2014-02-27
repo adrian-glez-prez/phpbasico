@@ -39,7 +39,8 @@ and open the template in the editor.
                     echo "<td>";
                     $destino="confirmar_eliminar_software.php?id=".$registro['id'];
                     echo "<a href=".$destino.">Eliminar</a></td>";                    
-                    echo "</td>";          
+                    echo "</td>"; 
+                    echo "</tr>";
                 }
                 echo "</table>";
             }
