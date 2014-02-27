@@ -12,9 +12,9 @@ and open the template in the editor.
     </head>
     <body>
         <div>INVENTARIO 3</div>
-        <form action="listado_software.php" method="post">
+        <form action="login.php" method="post">
             <div>login:<input type="text" name="login"/></div
-            <div>password:<input type="text" name="password"/></div>
+            <div>password:<input type="password" name="password"/></div>
             <div><input type="submit" name="enviar"/></div>
         </form>
     </body>
