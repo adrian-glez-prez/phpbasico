@@ -22,4 +22,3 @@ $_SESSION['id'] = (isset($_REQUEST['id']))?
     }
 
     $db = null;
-    ?>
