@@ -29,16 +29,17 @@ and open the template in the editor.
     </head>
     <body>
         <div>TODO write content</div>
-        <form action="resultado1.php" method="GET">
-            <div>Titulo: <input type="text" name="nombre" 
+        <form action="grabar_nuevo_software.php" method="GET">
+            <div>Titulo: <input type="text" name="titulo" 
                               value="<?php echo $_SESSION['datos'][0]; ?>"/>
             </div>
             <?php
                 if ($_SESSION['errores'][0]) {
                     echo "<div class 'error'>".MSG_ERR_TITULO."</div>";
+                    print_R($_SESSION['errores']);
                 }
             ?>
-            <div>URL <input type="text" name="apellido" 
+            <div>URL <input type="text" name="url" 
                             value="<?php echo $_SESSION['datos'][1]; ?>"/></div>
             </div>
             <?php

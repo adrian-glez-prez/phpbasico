@@ -19,10 +19,13 @@ function validarDatosRegistro() {
             $_REQUEST['url']:"";
 
     //-----validar ---- //
-    $errores = Array();
-    $errores[0] = !validarTitulo($datos[0]);
-    $errores[1] = !validarURL($datos[1]);
-
+    $errores = Array(0, 0);
+    
+    print_r($datos);
+    
+    $errores[0] = !(validarTitulo($datos[0]));
+    $errores[1] = !(validarURL($datos[1]));
+    print_r($errores);
     // ----- Asignar a variables de Sesión ----//
     $_SESSION['datos'] = $datos;
     $_SESSION['errores'] = $errores;  
@@ -32,11 +35,14 @@ function validarDatosRegistro() {
 }
 
 
+
 // PRINCIPAL //
 validarDatosRegistro();
+
+print_r($_SESSION['errores']);
 if ($_SESSION['hayErrores']) {
     $url = "formulario_nuevo_software.php";
-    header('Location:'.$url);
+    //header('Location:'.$url);
 } else {
     $db = conectaBd();
     $titulo = $_SESSION['datos'][0];
@@ -50,9 +56,10 @@ if ($_SESSION['hayErrores']) {
         unset($_SESSION['errores']);
         unset($_SESSION['hayErrores']);
         $url = "listado_software.php";
-        header('Location:'.$url);
+       // header('Location:'.$url);
     } else {
-        print "<p>Error al crear el registro.</p>\n";
+        $url = "error.php?msg_error=Error_Grabar_Nuevo_Software";
+        //header('Location:'.$url);
     }
 
     $db = null;
